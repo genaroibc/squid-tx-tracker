@@ -11,6 +11,8 @@ export function TxTracker({
   const [ error, setError ] = useState<string | null>(null)
   const [ loading, setLoading ] = useState<boolean>(false)
 
+  const blockExplorerUrls = chains.reduce((rpcs, chain) => ({ ...rpcs, [ chain.chainId ]: chain.blockExplorerUrl }), {})
+
   const handleSubmitTx = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (loading) return;
@@ -95,11 +97,10 @@ export function TxTracker({
 
           <p>
             IBC hop details:
-            <pre
-              className="mt-4 bg-gray-900 p-4 border border-gray-900 rounded overflow-auto"
-            >
-              {JSON.stringify(statusResponse.routeStatus, null, 2)}
-            </pre>
+            <IbcHopDetails
+              hops={statusResponse.routeStatus}
+              blockExplorerUrls={blockExplorerUrls}
+            />
           </p>
 
           <details>
@@ -163,5 +164,61 @@ const ChainSelector = ({ chains, ...props }: ChainSelectorProps) => {
         </option>
       ))}
     </select>
+  )
+}
+
+interface IbcHopDetailsProps {
+  hops: {
+    chainId: string, txHash: string,
+    status: string, action: string
+
+  }[]
+  blockExplorerUrls: Record<string, string>
+}
+
+const IbcHopDetails = ({ hops, blockExplorerUrls }: IbcHopDetailsProps) => {
+  return (
+    <pre
+      className="mt-4 bg-gray-900 p-4 border border-gray-900 rounded overflow-auto"
+    >
+
+      {
+        hops?.map((routeStatus, index) => {
+          const blockExplorerLink = new URL(routeStatus.txHash, blockExplorerUrls[ routeStatus.chainId ]).toString()
+
+          return (
+            <div key={routeStatus.chainId} className="flex flex-col gap-0.5">
+              {'{'}
+              <div>
+                {"  "}"chainId": "{routeStatus.chainId}"
+              </div>
+
+              <div>
+                {"  "}"status": "{routeStatus.status}"
+              </div>
+
+              <div>
+                {"  "}"action": "{routeStatus.action}"
+              </div>
+
+              <div>
+                {"  "}"txHash":{" "}
+                "{
+                  routeStatus.txHash ?
+                    <a href={blockExplorerLink} target="_blank" rel="noreferrer">
+                      {blockExplorerLink}
+                    </a>
+                    : <span>-</span>
+                }"
+              </div>
+
+              {`}${
+                index < hops.length - 1 ? "," : ""
+              }`}
+            </div>
+          )
+        })
+      }
+    </pre>
   )
 }
