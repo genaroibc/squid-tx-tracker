@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { ChainData } from "./types";
 
-export function TxTracker() {
+export function TxTracker({
+  chains
+}: {
+  chains: ChainData[]
+}) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [ statusResponse, setStatusResponse ] = useState<any | null>(null)
   const [ error, setError ] = useState<string | null>(null)
@@ -37,19 +42,16 @@ export function TxTracker() {
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-4">
           <div>From chain:</div>
-          <input type="text"
+
+          <ChainSelector chains={chains}
             name="fromChainId"
-            placeholder="osmosis-1"
-            className="p-2"
           />
         </div>
 
         <div className="flex flex-col gap-4">
           <div>To chain:</div>
-          <input type="text"
+          <ChainSelector chains={chains}
             name="toChainId"
-            placeholder="1"
-            className="p-2"
           />
         </div>
       </div>
@@ -143,5 +145,23 @@ const Loader = () => {
         </g>
       </g>
     </svg>
+  )
+}
+
+interface ChainSelectorProps extends React.HTMLProps<HTMLSelectElement> {
+  chains: ChainData[]
+}
+
+const ChainSelector = ({ chains, ...props }: ChainSelectorProps) => {
+  return (
+    <select className="p-2"
+      {...props}
+    >
+      {chains.map((chain) => (
+        <option key={chain.chainId} value={chain.chainId}>
+          {chain.name}
+        </option>
+      ))}
+    </select>
   )
 }
