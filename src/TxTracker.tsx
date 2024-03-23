@@ -184,7 +184,14 @@ const IbcHopDetails = ({ hops, blockExplorerUrls }: IbcHopDetailsProps) => {
 
       {
         hops?.map((routeStatus, index) => {
-          const blockExplorerLink = new URL(routeStatus.txHash, blockExplorerUrls[ routeStatus.chainId ]).toString()
+          let blockExplorerLink
+          try {
+
+            blockExplorerLink = new URL(`tx/${routeStatus.txHash}`, blockExplorerUrls[ routeStatus.chainId ]).toString()
+          } catch (error) {
+            console.error(error);
+            blockExplorerLink = routeStatus.txHash
+          }
 
           return (
             <div key={routeStatus.chainId} className="flex flex-col gap-0.5">
@@ -212,9 +219,8 @@ const IbcHopDetails = ({ hops, blockExplorerUrls }: IbcHopDetailsProps) => {
                 }"
               </div>
 
-              {`}${
-                index < hops.length - 1 ? "," : ""
-              }`}
+              {`}${index < hops.length - 1 ? "," : ""
+                }`}
             </div>
           )
         })
