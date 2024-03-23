@@ -3,110 +3,110 @@ import { ChainData } from "../types";
 export async function getChainsData(): Promise<ChainData[]> {
   return [
     {
-      chainId: "​1",
+      chainId: "1",
       name: "Ethereum",
       blockExplorerUrl: "https://etherscan.io/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/eth.svg",
     },
     {
-      chainId: "​42161",
+      chainId: "42161",
       name: "Arbitrum",
       blockExplorerUrl: "https://arbiscan.io/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/arb.svg",
     },
     {
-      chainId: "​10",
+      chainId: "10",
       name: "optimism",
       blockExplorerUrl: "https://optimistic.etherscan.io/",
       logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/11840.png",
     },
     {
-      chainId: "​59144",
+      chainId: "59144",
       name: "linea",
       blockExplorerUrl: "https://lineascan.build/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-satellite/main/public/assets/chains/linea.logo.svg",
     },
     {
-      chainId: "​8453",
+      chainId: "8453",
       name: "base",
       blockExplorerUrl: "https://basescan.org/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-satellite/main/public/assets/chains/base.logo.svg",
     },
     {
-      chainId: "​43114",
+      chainId: "43114",
       name: "Avalanche",
       blockExplorerUrl: "https://avascan.info/blockchain/c/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-docs/main/public/images/chains/avalanche.svg",
     },
     {
-      chainId: "​137",
+      chainId: "137",
       name: "Polygon",
       blockExplorerUrl: "https://polygonscan.com/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-docs/main/public/images/chains/polygon.svg",
     },
     {
-      chainId: "​56",
+      chainId: "56",
       name: "binance",
       blockExplorerUrl: "https://bscscan.com/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/bnb.svg",
     },
     {
-      chainId: "​250",
+      chainId: "250",
       name: "Fantom",
       blockExplorerUrl: "https://ftmscan.com/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-docs/main/public/images/chains/fantom.svg",
     },
     {
-      chainId: "​1284",
+      chainId: "1284",
       name: "Moonbeam",
       blockExplorerUrl: "https://moonscan.io/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/glmr.svg",
     },
     {
-      chainId: "​5000",
+      chainId: "5000",
       name: "mantle",
       blockExplorerUrl: "https://mantlescan.info/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/wmnt.svg",
     },
     {
-      chainId: "​534352",
+      chainId: "534352",
       name: "scroll",
       blockExplorerUrl: "https://scrollscan.com/",
       logoUrl:
         "https://raw.githubusercontent.com/axelarnetwork/axelar-docs/main/public/images/chains/scroll.svg",
     },
     {
-      chainId: "​42220",
+      chainId: "42220",
       name: "celo",
       blockExplorerUrl: "https://celoscan.io/",
       logoUrl:
         "https://celoscan.io/images/svg/brands/mainbrand-1.svg?v=23.5.4.0",
     },
     {
-      chainId: "​2222",
+      chainId: "2222",
       name: "kava",
       blockExplorerUrl: "https://kavascan.com/",
       logoUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/4846.png",
     },
     {
-      chainId: "​81457",
+      chainId: "81457",
       name: "blast",
       blockExplorerUrl: "https://blastscan.io/",
       logoUrl:
         "https://raw.githubusercontent.com/0xsquid/assets/main/images/tokens/blast.svg",
     },
     {
-      chainId: "​252",
+      chainId: "252",
       name: "fraxtal",
       blockExplorerUrl: "https://fraxscan.com/",
       logoUrl:
